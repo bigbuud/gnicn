@@ -1,0 +1,13 @@
+{
+  "name": "gnicn",
+  "version": "1.0.0",
+  "description": "Minimale video-player: speelt video's uit een map willekeurig of op volgorde af, met vorige/volgende/wissen.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

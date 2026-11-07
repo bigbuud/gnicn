@@ -1,0 +1,26 @@
+services:
+  gnicn:
+    # Optie 1: image van GitHub Container Registry (na de eerste push naar GitHub)
+    image: ghcr.io/JOUW_GITHUB_NAAM/gnicn:latest
+    # Optie 2: lokaal bouwen (haal optie 1 weg en zet dit aan)
+    # build: .
+    container_name: gnicn
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    # Zet uid:gid zodat de container in je videomap mag wissen (zie `id` op je server)
+    # user: "1026:100"
+    environment:
+      VIDEO_DIR: /videos
+      # Wissen: true = toegestaan, false = knop verbergen en blokkeren
+      ALLOW_DELETE: "true"
+      # Veiliger: gewiste video's verplaatsen naar een prullenmand i.p.v. definitief wissen
+      # (map moet gemount zijn, bv. /trash)
+      # TRASH_DIR: /trash
+      # Optioneel wachtwoord (aanbevolen als de app buiten je LAN bereikbaar is)
+      # AUTH_USER: roel
+      # AUTH_PASS: kies-een-wachtwoord
+      # EXTENSIONS: mp4,m4v,webm,mkv,mov,ogv,avi
+    volumes:
+      - /pad/naar/je/videos:/videos
+      # - /pad/naar/prullenmand:/trash
